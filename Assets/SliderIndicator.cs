@@ -1,31 +1,16 @@
-using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderIndicator : MonoBehaviour
+public class SliderIndicator : Indicator
 {
-    [SerializeField] private Slider _slider;
-
-    private Health _health;
+    private Slider _slider;
 
     private void Awake()
     {
-        _health = GetComponent<Health>();
+        _slider = GetComponent<Slider>();
     }
 
-    private void OnEnable()
+    public override void ViewIndicator(float currentHealth)
     {
-        _health.Healed += ViewIndicator;
-        _health.IsDamageTaken += ViewIndicator;
-    }
-
-    private void OnDisable()
-    {
-        _health.Healed -= ViewIndicator;
-        _health.IsDamageTaken -= ViewIndicator;
-    }
-
-    public void ViewIndicator(float currentHealth)
-    {
-        _slider.value = currentHealth / _health.MaxHealth;
+        _slider.value = currentHealth / Health.MaxHealth;
     }
 }

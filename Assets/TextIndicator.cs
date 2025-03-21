@@ -1,31 +1,16 @@
 using TMPro;
-using UnityEngine;
 
-public class TextIndicator : MonoBehaviour
+public class TextIndicator : Indicator
 {
-    [SerializeField] private TMP_Text _text;
-
-    private Health _health;
+    private TMP_Text _text;
 
     private void Awake()
     {
-        _health = GetComponent<Health>();
+        _text = GetComponent<TMP_Text>();
     }
 
-    private void OnEnable()
+    public override void ViewIndicator(float currentHealth)
     {
-        _health.Healed += ViewIndicator;
-        _health.IsDamageTaken += ViewIndicator;
-    }
-
-    private void OnDisable()
-    {
-        _health.Healed -= ViewIndicator;
-        _health.IsDamageTaken -= ViewIndicator;
-    }
-
-    public void ViewIndicator(float currentHealth)
-    {
-        _text.text = $"{((int)currentHealth)}/{_health.MaxHealth}";
+        _text.text = $"{((int)currentHealth)}/{Health.MaxHealth}";
     }
 }
