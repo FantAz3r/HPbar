@@ -20,24 +20,29 @@ public class Health : MonoBehaviour
 
     public void Heal(float healAmount)
     {
-        if (_currentHealth + healAmount > _maxHealth)
+        if(_currentHealth > 0)
         {
-            _currentHealth = _maxHealth;
-        }
-        else
-        {
-            _currentHealth += healAmount;
-        }
+            if (_currentHealth + healAmount > _maxHealth)
+            {
+                _currentHealth = _maxHealth;
+            }
+            else
+            {
+                _currentHealth += healAmount;
+            }
 
-        Healed?.Invoke(_currentHealth);
+            Healed?.Invoke(_currentHealth);
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
-        IsDamageTaken?.Invoke(_currentHealth);
-
-        if (_currentHealth <= 0)
+        if(_currentHealth - damage > 0)
+        {
+            _currentHealth -= damage;
+            IsDamageTaken?.Invoke(_currentHealth);
+        }
+        else
         {
             Die();
         }

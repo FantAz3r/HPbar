@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpriteRowIndicator : Indicator
+public class RowSpriteBar : Indicator
 {
     private RectTransform _healthSprite;
     private float _healthPercentage;

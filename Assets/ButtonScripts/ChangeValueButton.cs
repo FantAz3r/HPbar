@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Health))]
-public class DamageButton : MonoBehaviour
+public abstract class ChangeValueButton : MonoBehaviour
 {
     [SerializeField] private Button _button;
-    [SerializeField] private int _damage;
+    [SerializeField] private int _changeValue;
 
     private Health _health;
+    
+    protected Health Health => _health;
+    protected int ChangeValue => _changeValue;
 
     private void Awake()
     {
@@ -24,9 +26,5 @@ public class DamageButton : MonoBehaviour
         _button.onClick.RemoveListener(HandleButtonClick);
     }
 
-    private void HandleButtonClick()
-    {
-        _health.TakeDamage(_damage);
-        Debug.Log(" нопка была нажата!");
-    }
+    protected abstract void HandleButtonClick();
 }

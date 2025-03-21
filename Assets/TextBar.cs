@@ -1,6 +1,6 @@
 using TMPro;
 
-public class TextIndicator : Indicator
+public class TextBar : Indicator
 {
     private TMP_Text _text;
 

@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-public class SliderIndicator : Indicator
+public class SliderBar : Indicator
 {
     private Slider _slider;
 

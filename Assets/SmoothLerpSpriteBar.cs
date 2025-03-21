@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpriteLerpIndicator : SmoothIndicator
+public class SmoothLerpSpriteBar : SmoothIndicator
 {
     [SerializeField] private float _spriteSpeed = 0.05f;
 
